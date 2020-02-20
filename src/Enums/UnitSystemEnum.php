@@ -30,11 +30,11 @@ class UnitSystemEnum extends Enum
         }
 
         return collect($unitClasses)
+            ->filter(function (string $unitClass): bool {
+                return array_key_exists($this->getInterface(), class_implements($unitClass));
+            })
             ->mapWithKeys(function (string $unitClass): array {
                 return [$unitClass => (new $unitClass)->toArray()];
-            })
-            ->filter(function (array $unit, string $unitClass) {
-                return array_key_exists($this->getInterface(), class_implements($unitClass));
             })
             ->all();
     }
