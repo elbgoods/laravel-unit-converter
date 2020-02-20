@@ -8,14 +8,14 @@ use Elbgoods\LaravelUnitConverter\Tests\TestCase;
 use Elbgoods\LaravelUnitConverter\Units\Area\SquareCentiMeter;
 use Elbgoods\LaravelUnitConverter\Units\Length\CentiMeter;
 use Elbgoods\LaravelUnitConverter\Units\Length\Foot;
-use Elbgoods\LaravelUnitConverter\Units\Mass\Gram;
 use Elbgoods\LaravelUnitConverter\Units\Length\Inch;
-use Elbgoods\LaravelUnitConverter\Units\Mass\KiloGram;
 use Elbgoods\LaravelUnitConverter\Units\Length\Meter;
 use Elbgoods\LaravelUnitConverter\Units\Length\MilliMeter;
+use Elbgoods\LaravelUnitConverter\Units\Length\Yard;
+use Elbgoods\LaravelUnitConverter\Units\Mass\Gram;
+use Elbgoods\LaravelUnitConverter\Units\Mass\KiloGram;
 use Elbgoods\LaravelUnitConverter\Units\Mass\Ounce;
 use Elbgoods\LaravelUnitConverter\Units\Mass\Pound;
-use Elbgoods\LaravelUnitConverter\Units\Length\Yard;
 
 final class UnitTypeEnumTest extends TestCase
 {
@@ -41,7 +41,7 @@ final class UnitTypeEnumTest extends TestCase
         $unitType = UnitTypeEnum::make($type);
 
         static::assertCount(count($units), $unitType->getUnits());
-        foreach($units as $unit) {
+        foreach ($units as $unit) {
             static::assertArrayHasKey($unit, $unitType->getUnits());
         }
     }
@@ -56,7 +56,7 @@ final class UnitTypeEnumTest extends TestCase
         $unitSystem = UnitSystemEnum::make($system);
 
         static::assertCount(count($units), $unitType->getUnitsBySystem($unitSystem));
-        foreach($units as $unit) {
+        foreach ($units as $unit) {
             static::assertArrayHasKey($unit, $unitType->getUnitsBySystem($unitSystem));
         }
     }
@@ -206,7 +206,7 @@ final class UnitTypeEnumTest extends TestCase
             ['mass', 'metric', new Gram(1000), 1, 'kg'],
 
             ['mass', 'usc', 1, 2.20462262185, 'lb'],
-            ['mass', 'usc', new Pound(1/16), 1, 'oz'],
+            ['mass', 'usc', new Pound(1 / 16), 1, 'oz'],
             ['mass', 'usc', new Ounce(16), 1, 'lb'],
             ['mass', 'usc', 1, 2.2046226218487757, 'lb'],
 

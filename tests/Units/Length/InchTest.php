@@ -3,8 +3,6 @@
 namespace Elbgoods\LaravelUnitConverter\Tests\Units\Length;
 
 use Elbgoods\LaravelUnitConverter\Tests\TestCase;
-use Elbgoods\LaravelUnitConverter\Units\Length\CentiMeter;
-use Elbgoods\LaravelUnitConverter\Units\Length\Foot;
 use Elbgoods\LaravelUnitConverter\Units\Length\Inch;
 
 final class InchTest extends TestCase

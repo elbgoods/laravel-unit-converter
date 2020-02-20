@@ -3,7 +3,6 @@
 namespace Elbgoods\LaravelUnitConverter\Units;
 
 use Elbgoods\LaravelUnitConverter\Unit;
-use Elbgoods\LaravelUnitConverter\Units\Mass\Gram;
 use Elbgoods\LaravelUnitConverter\Units\Mass\KiloGram;
 use PhpUnitConversion\UnitType;
 

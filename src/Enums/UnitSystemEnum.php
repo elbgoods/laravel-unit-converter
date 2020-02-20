@@ -2,7 +2,6 @@
 
 namespace Elbgoods\LaravelUnitConverter\Enums;
 
-use Elbgoods\LaravelUnitConverter\Concerns\ExtractsUnitInformation;
 use PhpUnitConversion\Map\Unit as UnitMap;
 use PhpUnitConversion\System\Imperial;
 use PhpUnitConversion\System\Metric;
@@ -26,15 +25,15 @@ class UnitSystemEnum extends Enum
     {
         $unitClasses = UnitMap::get();
 
-        if(!is_array($unitClasses)) {
+        if (! is_array($unitClasses)) {
             return [];
         }
 
         return collect($unitClasses)
-            ->mapWithKeys(function(string $unitClass): array {
+            ->mapWithKeys(function (string $unitClass): array {
                 return [$unitClass => (new $unitClass)->toArray()];
             })
-            ->filter(function(array $unit, string $unitClass) {
+            ->filter(function (array $unit, string $unitClass) {
                 return array_key_exists($this->getInterface(), class_implements($unitClass));
             })
             ->all();
@@ -42,14 +41,14 @@ class UnitSystemEnum extends Enum
 
     public function getUnitsByType(UnitTypeEnum $unitType): array
     {
-        return array_filter($this->getUnits(), function(array $unit) use ($unitType) {
+        return array_filter($this->getUnits(), function (array $unit) use ($unitType) {
             return $unitType->isEqual($unit['type']);
         });
     }
 
     public function getInterface(): string
     {
-        switch($this->getName()) {
+        switch ($this->getName()) {
             case 'METRIC':
                 return Metric::class;
             case 'IMPERIAL':

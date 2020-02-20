@@ -3,7 +3,6 @@
 namespace Elbgoods\LaravelUnitConverter;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Str;
 use PhpUnitConversion\Map as UnitMap;
 use ReflectionClass;
 
@@ -23,13 +22,13 @@ class LaravelUnitConverterServiceProvider extends ServiceProvider
             ], 'lang');
         }
 
-        if(!config('unit-converter.default_units')) {
+        if (! config('unit-converter.default_units')) {
             UnitMap::clear();
         }
 
-        foreach(config('unit-converter.units') as $unitType => $units) {
-            foreach($units as $path => $namespace) {
-                if(is_numeric($path) && class_exists($namespace)) {
+        foreach (config('unit-converter.units') as $unitType => $units) {
+            foreach ($units as $path => $namespace) {
+                if (is_numeric($path) && class_exists($namespace)) {
                     $class = new ReflectionClass($namespace);
                     $path = $class->getFileName();
                     $namespace = $class->getNamespaceName();

@@ -2,13 +2,8 @@
 
 namespace Elbgoods\LaravelUnitConverter\Enums;
 
-use Elbgoods\LaravelUnitConverter\Concerns\ExtractsUnitInformation;
 use Illuminate\Support\Collection;
 use PhpUnitConversion\Map\Unit as UnitMap;
-use PhpUnitConversion\System\Imperial;
-use PhpUnitConversion\System\Metric;
-use PhpUnitConversion\System\USC;
-use PhpUnitConversion\Traits\BaseUnit;
 use PhpUnitConversion\Unit;
 use PhpUnitConversion\UnitType;
 use Spatie\Enum\Enum;
@@ -51,12 +46,12 @@ class UnitTypeEnum extends Enum
     {
         $unitClasses = UnitMap::byType($this->getIndex());
 
-        if(!is_array($unitClasses)) {
+        if (! is_array($unitClasses)) {
             return [];
         }
 
         return collect($unitClasses)
-            ->mapWithKeys(function(string $unitClass): array {
+            ->mapWithKeys(function (string $unitClass): array {
                 return [$unitClass => (new $unitClass)->toArray()];
             })
             ->all();
@@ -64,7 +59,7 @@ class UnitTypeEnum extends Enum
 
     public function getUnitsBySystem(UnitSystemEnum $unitSystem): array
     {
-        return array_filter($this->getUnits(), function(string $unitClass) use ($unitSystem) {
+        return array_filter($this->getUnits(), function (string $unitClass) use ($unitSystem) {
             return array_key_exists($unitSystem->getInterface(), class_implements($unitClass));
         }, ARRAY_FILTER_USE_KEY);
     }
@@ -109,13 +104,13 @@ class UnitTypeEnum extends Enum
 
         $baseValue = $value instanceof Unit ? $value->to($this->getBaseUnitClass()) : $this->createFromBaseUnit($value);
 
-        if(empty($units)) {
+        if (empty($units)) {
             return $value instanceof Unit ? $value : $baseValue;
         }
 
         /** @var Collection $values */
         $values = collect(array_keys($units))
-            ->map(function(string $unitClass) use ($baseValue): Unit {
+            ->map(function (string $unitClass) use ($baseValue): Unit {
                 return $baseValue->to($unitClass);
             })
             ->sortBy->getValue();
@@ -124,7 +119,7 @@ class UnitTypeEnum extends Enum
             return $unit->getValue() >= 1;
         });
 
-        if($nearest instanceof Unit) {
+        if ($nearest instanceof Unit) {
             return $nearest;
         }
 

@@ -1,9 +1,9 @@
 <?php
+
 namespace Elbgoods\LaravelUnitConverter\Units\Area;
 
 use Elbgoods\LaravelUnitConverter\Units\Area;
 use PhpUnitConversion\System\USC;
-use PhpUnitConversion\Traits\HasFactor;
 
 class SquareFoot extends Area implements USC
 {

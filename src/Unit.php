@@ -10,8 +10,8 @@ use JsonSerializable;
 use PhpUnitConversion\System\Imperial;
 use PhpUnitConversion\System\Metric;
 use PhpUnitConversion\System\USC;
-use PhpUnitConversion\Unit as BaseUnit;
 use PhpUnitConversion\Traits\BaseUnit as IsBaseUnit;
+use PhpUnitConversion\Unit as BaseUnit;
 
 abstract class Unit extends BaseUnit implements Arrayable, Jsonable, JsonSerializable
 {

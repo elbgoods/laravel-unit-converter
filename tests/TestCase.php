@@ -2,6 +2,7 @@
 
 namespace Elbgoods\LaravelUnitConverter\Tests;
 
+use Elbgoods\LaravelUnitConverter\LaravelUnitConverterServiceProvider;
 use Elbgoods\LaravelUnitConverter\Units\Area;
 use Elbgoods\LaravelUnitConverter\Units\Area\SquareCentiMeter;
 use Elbgoods\LaravelUnitConverter\Units\Area\SquareFoot;
@@ -12,17 +13,16 @@ use Elbgoods\LaravelUnitConverter\Units\Area\SquareYard;
 use Elbgoods\LaravelUnitConverter\Units\Length;
 use Elbgoods\LaravelUnitConverter\Units\Length\CentiMeter;
 use Elbgoods\LaravelUnitConverter\Units\Length\Foot;
-use Elbgoods\LaravelUnitConverter\Units\Mass\Gram;
 use Elbgoods\LaravelUnitConverter\Units\Length\Inch;
-use Elbgoods\LaravelUnitConverter\Units\Mass\KiloGram;
 use Elbgoods\LaravelUnitConverter\Units\Length\Meter;
 use Elbgoods\LaravelUnitConverter\Units\Length\MilliMeter;
-use Elbgoods\LaravelUnitConverter\Units\Mass\Ounce;
-use Elbgoods\LaravelUnitConverter\Units\Mass\Pound;
 use Elbgoods\LaravelUnitConverter\Units\Length\Yard;
 use Elbgoods\LaravelUnitConverter\Units\Mass;
+use Elbgoods\LaravelUnitConverter\Units\Mass\Gram;
+use Elbgoods\LaravelUnitConverter\Units\Mass\KiloGram;
+use Elbgoods\LaravelUnitConverter\Units\Mass\Ounce;
+use Elbgoods\LaravelUnitConverter\Units\Mass\Pound;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
-use Elbgoods\LaravelUnitConverter\LaravelUnitConverterServiceProvider;
 
 abstract class TestCase extends OrchestraTestCase
 {

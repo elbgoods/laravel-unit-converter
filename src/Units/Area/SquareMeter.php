@@ -1,4 +1,5 @@
 <?php
+
 namespace Elbgoods\LaravelUnitConverter\Units\Area;
 
 use Elbgoods\LaravelUnitConverter\Units\Area;
