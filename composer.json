@@ -25,6 +25,7 @@
         "spatie/enum": "^2.3"
     },
     "require-dev": {
+        "elbgoods/ci-test-tools": "^1.5",
         "orchestra/testbench": "^4.0",
         "phpunit/phpunit": "^8.0"
     },
