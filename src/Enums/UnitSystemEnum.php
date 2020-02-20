@@ -17,8 +17,6 @@ use Spatie\Enum\Exceptions\InvalidNameException;
  */
 class UnitSystemEnum extends Enum
 {
-    use ExtractsUnitInformation;
-
     public function getValue(): string
     {
         return strtolower($this->getName());
@@ -34,10 +32,10 @@ class UnitSystemEnum extends Enum
 
         return collect($unitClasses)
             ->mapWithKeys(function(string $unitClass): array {
-                return [$unitClass => $this->extractUnitInformation($unitClass)];
+                return [$unitClass => (new $unitClass)->toArray()];
             })
-            ->filter(function(array $unit) {
-                return $unit['is_'.$this->getValue()];
+            ->filter(function(array $unit, string $unitClass) {
+                return array_key_exists($this->getInterface(), class_implements($unitClass));
             })
             ->all();
     }

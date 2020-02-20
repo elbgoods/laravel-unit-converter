@@ -5,16 +5,17 @@ namespace Elbgoods\LaravelUnitConverter\Tests\Enums;
 use Elbgoods\LaravelUnitConverter\Enums\UnitSystemEnum;
 use Elbgoods\LaravelUnitConverter\Enums\UnitTypeEnum;
 use Elbgoods\LaravelUnitConverter\Tests\TestCase;
-use PhpUnitConversion\Unit\Length\CentiMeter;
-use PhpUnitConversion\Unit\Length\Foot;
-use PhpUnitConversion\Unit\Length\Meter;
-use PhpUnitConversion\Unit\Length\Mile;
-use PhpUnitConversion\Unit\Length\MilliMeter;
-use PhpUnitConversion\Unit\Length\Yard;
-use PhpUnitConversion\Unit\Mass\Gram;
-use PhpUnitConversion\Unit\Mass\KiloGram;
-use PhpUnitConversion\Unit\Mass\Ounce;
-use PhpUnitConversion\Unit\Mass\Pound;
+use Elbgoods\LaravelUnitConverter\Units\Area\SquareCentiMeter;
+use Elbgoods\LaravelUnitConverter\Units\Length\CentiMeter;
+use Elbgoods\LaravelUnitConverter\Units\Length\Foot;
+use Elbgoods\LaravelUnitConverter\Units\Mass\Gram;
+use Elbgoods\LaravelUnitConverter\Units\Length\Inch;
+use Elbgoods\LaravelUnitConverter\Units\Mass\KiloGram;
+use Elbgoods\LaravelUnitConverter\Units\Length\Meter;
+use Elbgoods\LaravelUnitConverter\Units\Length\MilliMeter;
+use Elbgoods\LaravelUnitConverter\Units\Mass\Ounce;
+use Elbgoods\LaravelUnitConverter\Units\Mass\Pound;
+use Elbgoods\LaravelUnitConverter\Units\Length\Yard;
 
 final class UnitTypeEnumTest extends TestCase
 {
@@ -84,6 +85,8 @@ final class UnitTypeEnumTest extends TestCase
      */
     public function it_can_get_nearest_unit(string $type, ?string $system, $value, float $expectedValue, string $expectedSymbol): void
     {
+        $expected = sprintf('%.3f %s', $expectedValue, $expectedSymbol);
+
         $unitType = UnitTypeEnum::make($type);
 
         $nearest = $unitType->getNearestUnit(
@@ -91,8 +94,7 @@ final class UnitTypeEnumTest extends TestCase
             $system ? UnitSystemEnum::make($system) : null
         );
 
-        static::assertEquals($expectedValue, $nearest->getValue());
-        static::assertSame($expectedSymbol, $nearest->getSymbol());
+        static::assertSame($expected, $nearest->format());
     }
 
     public function provideUnitTypeValues(): array
@@ -130,7 +132,7 @@ final class UnitTypeEnumTest extends TestCase
                 MilliMeter::class,
                 Yard::class,
                 Foot::class,
-                Mile::class,
+                Inch::class,
             ]],
             ['mass', [
                 KiloGram::class,
@@ -156,7 +158,7 @@ final class UnitTypeEnumTest extends TestCase
             ['length', 'imperial', [
                 Yard::class,
                 Foot::class,
-                Mile::class,
+                Inch::class,
             ]],
             ['mass', 'imperial', [
                 Pound::class,
@@ -165,7 +167,7 @@ final class UnitTypeEnumTest extends TestCase
             ['length', 'usc', [
                 Yard::class,
                 Foot::class,
-                Mile::class,
+                Inch::class,
             ]],
             ['mass', 'usc', [
                 Pound::class,
@@ -178,7 +180,7 @@ final class UnitTypeEnumTest extends TestCase
     {
         return [
             ['length', Meter::class, 'm', 'meter'],
-            ['mass', Gram::class, 'g', 'gram'],
+            ['mass', KiloGram::class, 'kg', 'kilogram'],
         ];
     }
 
@@ -199,10 +201,18 @@ final class UnitTypeEnumTest extends TestCase
             ['length', 'metric', new MilliMeter(2000), 2, 'm'],
             ['length', 'metric', new MilliMeter(0.1), 0.1, 'mm'],
 
-            ['mass', 'metric', 1, 1, 'g'],
-            ['mass', 'metric', 100, 100, 'g'],
-            ['mass', 'metric', 1000, 1, 'kg'],
-            ['mass', 'metric', new KiloGram(0.1), 100, 'g'],
+            ['mass', 'metric', 1, 1, 'kg'],
+            ['mass', 'metric', 0.1, 100, 'g'],
+            ['mass', 'metric', new Gram(1000), 1, 'kg'],
+
+            ['mass', 'usc', 1, 2.20462262185, 'lb'],
+            ['mass', 'usc', new Pound(1/16), 1, 'oz'],
+            ['mass', 'usc', new Ounce(16), 1, 'lb'],
+            ['mass', 'usc', 1, 2.2046226218487757, 'lb'],
+
+            ['area', 'metric', 1, 1, 'm2'],
+            ['area', 'metric', 0.1, 1000, 'cm2'],
+            ['area', 'metric', new SquareCentiMeter(0.1), 10, 'mm2'],
         ];
     }
 }

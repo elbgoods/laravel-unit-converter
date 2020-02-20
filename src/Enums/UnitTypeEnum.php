@@ -24,8 +24,6 @@ use Spatie\Enum\Enum;
  */
 class UnitTypeEnum extends Enum
 {
-    use ExtractsUnitInformation;
-
     const MAP_INDEX = [
         'MASS' => UnitType::MASS,
         'LENGTH' => UnitType::LENGTH,
@@ -46,7 +44,7 @@ class UnitTypeEnum extends Enum
      */
     public function getUnitTypeClass(): string
     {
-        return 'PhpUnitConversion\\Unit\\'.ucfirst($this->getValue());
+        return 'Elbgoods\\LaravelUnitConverter\\Units\\'.ucfirst($this->getValue());
     }
 
     public function getUnits(): array
@@ -59,7 +57,7 @@ class UnitTypeEnum extends Enum
 
         return collect($unitClasses)
             ->mapWithKeys(function(string $unitClass): array {
-                return [$unitClass => $this->extractUnitInformation($unitClass)];
+                return [$unitClass => (new $unitClass)->toArray()];
             })
             ->all();
     }
