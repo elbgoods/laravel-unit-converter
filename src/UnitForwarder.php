@@ -38,7 +38,7 @@ class UnitForwarder
 
     public function __call(string $method, array $arguments)
     {
-        if(in_array($method, ['make', 'fromBase'])) {
+        if (in_array($method, ['make', 'fromBase'])) {
             return forward_static_call_array([get_class($this->unit), $method], $arguments);
         }
 

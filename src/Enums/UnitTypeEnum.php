@@ -4,7 +4,6 @@ namespace Elbgoods\LaravelUnitConverter\Enums;
 
 use Elbgoods\LaravelUnitConverter\UnitForwarder;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Traits\ForwardsCalls;
 use PhpUnitConversion\Map\Unit as UnitMap;
 use PhpUnitConversion\Unit;
 use PhpUnitConversion\UnitType;
