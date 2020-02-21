@@ -19,7 +19,7 @@ use Spatie\Enum\Enum;
  */
 class UnitTypeEnum extends Enum
 {
-    const MAP_INDEX = [
+    protected const MAP_INDEX = [
         'MASS' => UnitType::MASS,
         'LENGTH' => UnitType::LENGTH,
         'AREA' => UnitType::AREA,
@@ -34,9 +34,6 @@ class UnitTypeEnum extends Enum
         return strtolower($this->getName());
     }
 
-    /**
-     * @return string|Unit
-     */
     public function getUnitTypeClass(): string
     {
         return 'Elbgoods\\LaravelUnitConverter\\Units\\'.ucfirst($this->getValue());
@@ -51,22 +48,19 @@ class UnitTypeEnum extends Enum
         }
 
         return Collection::make($unitClasses)
-            ->mapWithKeys(function (string $unitClass): array {
-                return [$unitClass => (new $unitClass)->toArray()];
+            ->mapWithKeys(static function (string $unitClass): array {
+                return [$unitClass => (new $unitClass())->toArray()];
             })
             ->all();
     }
 
     public function getUnitsBySystem(UnitSystemEnum $unitSystem): array
     {
-        return array_filter($this->getUnits(), function (string $unitClass) use ($unitSystem) {
+        return array_filter($this->getUnits(), static function (string $unitClass) use ($unitSystem): bool {
             return array_key_exists($unitSystem->getInterface(), class_implements($unitClass));
         }, ARRAY_FILTER_USE_KEY);
     }
 
-    /**
-     * @return string|Unit
-     */
     public function getBaseUnitClass(): string
     {
         return constant($this->getUnitTypeClass().'::BASE_UNIT');
@@ -97,7 +91,7 @@ class UnitTypeEnum extends Enum
      */
     public function getNearestUnit($value, ?UnitSystemEnum $unitSystem = null): Unit
     {
-        // @todo: https://github.com/pimlie/php-unit-conversion/issues/18
+        // https://github.com/pimlie/php-unit-conversion/issues/18
         // return forward_static_call([$this->getUnitTypeClass(), 'nearest'], $value, $unitSystem ? $unitSystem->getInterface() : null);
 
         $units = $unitSystem === null ? $this->getUnits() : $this->getUnitsBySystem($unitSystem);
@@ -109,14 +103,14 @@ class UnitTypeEnum extends Enum
         }
 
         $values = Collection::make(array_keys($units))
-            ->map(function (string $unitClass) use ($baseValue): Unit {
+            ->map(static function (string $unitClass) use ($baseValue): Unit {
                 return $baseValue->to($unitClass);
             })
-            ->sortBy(function (Unit $unit): float {
+            ->sortBy(static function (Unit $unit): float {
                 return $unit->getValue();
             });
 
-        $nearest = $values->first(function (Unit $unit): bool {
+        $nearest = $values->first(static function (Unit $unit): bool {
             return $unit->getValue() >= 1;
         });
 

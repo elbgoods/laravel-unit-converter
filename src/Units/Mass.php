@@ -8,6 +8,6 @@ use PhpUnitConversion\UnitType;
 
 abstract class Mass extends Unit
 {
-    const TYPE = UnitType::MASS;
-    const BASE_UNIT = KiloGram::class;
+    public const TYPE = UnitType::MASS;
+    public const BASE_UNIT = KiloGram::class;
 }

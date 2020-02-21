@@ -8,8 +8,8 @@ use PhpUnitConversion\System\USC;
 
 class Yard extends Length implements Imperial, USC
 {
-    const FACTOR = 0.9144;
+    public const FACTOR = 0.9144;
 
-    const SYMBOL = 'yd';
-    const LABEL = 'yard';
+    public const SYMBOL = 'yd';
+    public const LABEL = 'yard';
 }

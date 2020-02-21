@@ -7,8 +7,8 @@ use PhpUnitConversion\System\USC;
 
 class SquareInch extends Area implements USC
 {
-    const FACTOR = 1 / 1296;
+    public const FACTOR = 1 / 1296;
 
-    const SYMBOL = 'in2';
-    const LABEL = 'square inch';
+    public const SYMBOL = 'in2';
+    public const LABEL = 'square inch';
 }

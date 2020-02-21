@@ -8,8 +8,8 @@ use PhpUnitConversion\System\USC;
 
 class Pound extends Mass implements Imperial, USC
 {
-    const FACTOR = 0.45359237;
+    public const FACTOR = 0.45359237;
 
-    const SYMBOL = 'lb';
-    const LABEL = 'pound';
+    public const SYMBOL = 'lb';
+    public const LABEL = 'pound';
 }

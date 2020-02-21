@@ -7,8 +7,8 @@ use PhpUnitConversion\System\Metric;
 
 class Gram extends Mass implements Metric
 {
-    const FACTOR = 1E-3;
+    public const FACTOR = 1E-3;
 
-    const SYMBOL = 'g';
-    const LABEL = 'gram';
+    public const SYMBOL = 'g';
+    public const LABEL = 'gram';
 }

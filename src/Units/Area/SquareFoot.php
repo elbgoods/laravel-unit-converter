@@ -7,8 +7,8 @@ use PhpUnitConversion\System\USC;
 
 class SquareFoot extends Area implements USC
 {
-    const FACTOR = 0.0929034116133;
+    public const FACTOR = 0.0929034116133;
 
-    const SYMBOL = 'ft2';
-    const LABEL = 'square foot';
+    public const SYMBOL = 'ft2';
+    public const LABEL = 'square foot';
 }

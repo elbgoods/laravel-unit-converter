@@ -8,6 +8,6 @@ use PhpUnitConversion\UnitType;
 
 abstract class Area extends Unit
 {
-    const TYPE = UnitType::AREA;
-    const BASE_UNIT = SquareMeter::class;
+    public const TYPE = UnitType::AREA;
+    public const BASE_UNIT = SquareMeter::class;
 }

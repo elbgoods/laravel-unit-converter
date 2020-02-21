@@ -34,15 +34,15 @@ class UnitSystemEnum extends Enum
             ->filter(function (string $unitClass): bool {
                 return array_key_exists($this->getInterface(), class_implements($unitClass));
             })
-            ->mapWithKeys(function (string $unitClass): array {
-                return [$unitClass => (new $unitClass)->toArray()];
+            ->mapWithKeys(static function (string $unitClass): array {
+                return [$unitClass => (new $unitClass())->toArray()];
             })
             ->all();
     }
 
     public function getUnitsByType(UnitTypeEnum $unitType): array
     {
-        return array_filter($this->getUnits(), function (array $unit) use ($unitType) {
+        return array_filter($this->getUnits(), static function (array $unit) use ($unitType): bool {
             return $unitType->isEqual($unit['type']);
         });
     }

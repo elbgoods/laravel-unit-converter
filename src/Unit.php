@@ -2,7 +2,7 @@
 
 namespace Elbgoods\LaravelUnitConverter;
 
-use Elbgoods\LaravelUnitConverter\Contracts\SI;
+use Elbgoods\LaravelUnitConverter\Contracts\InternationalSystemOfUnits;
 use Elbgoods\LaravelUnitConverter\Enums\UnitTypeEnum;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
@@ -47,11 +47,16 @@ abstract class Unit extends BaseUnit implements Arrayable, Jsonable, JsonSeriali
             'is_metric' => array_key_exists(Metric::class, $interfaces),
             'is_imperial' => array_key_exists(Imperial::class, $interfaces),
             'is_usc' => array_key_exists(USC::class, $interfaces),
-            'is_si' => array_key_exists(SI::class, $interfaces),
+            'is_si' => array_key_exists(InternationalSystemOfUnits::class, $interfaces),
             'is_base' => array_key_exists(IsBaseUnit::class, class_uses_recursive($this)),
         ];
     }
 
+    /**
+     * @param int $options
+     *
+     * @return string
+     */
     public function toJson($options = 0): string
     {
         return json_encode($this->jsonSerialize(), $options);

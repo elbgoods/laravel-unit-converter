@@ -7,8 +7,8 @@ use PhpUnitConversion\System\Metric;
 
 class SquareMilliMeter extends Area implements Metric
 {
-    const FACTOR = 0.000001;
+    public const FACTOR = 0.000001;
 
-    const SYMBOL = 'mm2';
-    const LABEL = 'square millimeter';
+    public const SYMBOL = 'mm2';
+    public const LABEL = 'square millimeter';
 }

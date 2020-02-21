@@ -7,8 +7,8 @@ use PhpUnitConversion\System\Metric;
 
 class MilliMeter extends Length implements Metric
 {
-    const FACTOR = 0.001;
+    public const FACTOR = 0.001;
 
-    const SYMBOL = 'mm';
-    const LABEL = 'millimeter';
+    public const SYMBOL = 'mm';
+    public const LABEL = 'millimeter';
 }

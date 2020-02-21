@@ -2,6 +2,6 @@
 
 namespace Elbgoods\LaravelUnitConverter\Contracts;
 
-interface SI
+interface InternationalSystemOfUnits
 {
 }

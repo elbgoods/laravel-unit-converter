@@ -7,8 +7,8 @@ use PhpUnitConversion\System\Metric;
 
 class CentiMeter extends Length implements Metric
 {
-    const FACTOR = 0.01;
+    public const FACTOR = 0.01;
 
-    const SYMBOL = 'cm';
-    const LABEL = 'centimeter';
+    public const SYMBOL = 'cm';
+    public const LABEL = 'centimeter';
 }

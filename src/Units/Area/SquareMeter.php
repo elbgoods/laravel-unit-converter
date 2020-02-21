@@ -10,6 +10,6 @@ class SquareMeter extends Area implements Metric
 {
     use BaseUnit;
 
-    const SYMBOL = 'm2';
-    const LABEL = 'square meter';
+    public const SYMBOL = 'm2';
+    public const LABEL = 'square meter';
 }

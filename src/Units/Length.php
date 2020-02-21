@@ -8,6 +8,6 @@ use PhpUnitConversion\UnitType;
 
 abstract class Length extends Unit
 {
-    const TYPE = UnitType::LENGTH;
-    const BASE_UNIT = Meter::class;
+    public const TYPE = UnitType::LENGTH;
+    public const BASE_UNIT = Meter::class;
 }
