@@ -14,16 +14,25 @@ class UnitForwarder
 {
     use ForwardsCalls;
 
-    private Unit $unit;
+    protected Unit $unit;
+
+    public static function build(string $unitClass): self
+    {
+        return new static(new $unitClass());
+    }
 
     public function __construct(Unit $unit)
     {
         $this->unit = $unit;
     }
 
-    public static function build(string $unitClass): self
+    public function __call(string $method, array $arguments)
     {
-        return new static(new $unitClass());
+        if (in_array($method, ['make', 'fromBase'])) {
+            return forward_static_call_array([get_class($this->unit), $method], $arguments);
+        }
+
+        return $this->forwardCallTo($this->unit, $method, $arguments);
     }
 
     public function unitClassName(): string
@@ -34,14 +43,5 @@ class UnitForwarder
     public function isInstanceOf(string $unitClass): bool
     {
         return $this->unit instanceof $unitClass;
-    }
-
-    public function __call(string $method, array $arguments)
-    {
-        if (in_array($method, ['make', 'fromBase'])) {
-            return forward_static_call_array([get_class($this->unit), $method], $arguments);
-        }
-
-        return $this->forwardCallTo($this->unit, $method, $arguments);
     }
 }
