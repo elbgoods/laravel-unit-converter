@@ -12,6 +12,7 @@ use PhpUnitConversion\System\Metric;
 use PhpUnitConversion\System\USC;
 use PhpUnitConversion\Traits\BaseUnit as IsBaseUnit;
 use PhpUnitConversion\Unit as BaseUnit;
+use RuntimeException;
 
 abstract class Unit extends BaseUnit implements Arrayable, Jsonable, JsonSerializable
 {
@@ -27,7 +28,13 @@ abstract class Unit extends BaseUnit implements Arrayable, Jsonable, JsonSeriali
 
     public function toBase(): self
     {
-        return $this->to($this->getBaseUnit());
+        $base = $this->to($this->getBaseUnit());
+
+        if ($base instanceof self) {
+            return $base;
+        }
+
+        throw new RuntimeException(sprintf('The base unit has to extend [%s].', self::class));
     }
 
     public function getType(): int
