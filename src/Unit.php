@@ -16,8 +16,19 @@ use RuntimeException;
 
 abstract class Unit extends BaseUnit implements Arrayable, Jsonable, JsonSerializable
 {
-    public static function make(?float $value = null, bool $convertFromBaseUnit = false): self
+    /**
+     * @param float|Unit|null $value
+     * @param bool $convertFromBaseUnit
+     *
+     * @return static
+     */
+    public static function make($value = null, bool $convertFromBaseUnit = false): self
     {
+        if ($value instanceof self) {
+            $value = $value->toBase()->getValue();
+            $convertFromBaseUnit = true;
+        }
+
         return new static($value, $convertFromBaseUnit);
     }
 

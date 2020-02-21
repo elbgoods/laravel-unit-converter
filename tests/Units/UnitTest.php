@@ -33,6 +33,12 @@ final class UnitTest extends TestCase
         static::assertInstanceOf($unitClass, $unit);
         static::assertIsFloat($unit->getValue());
         static::assertEquals(1, $unit->toBase()->getValue());
+
+        $unit = forward_static_call([$unitClass, 'make'], $unit);
+
+        static::assertInstanceOf($unitClass, $unit);
+        static::assertIsFloat($unit->getValue());
+        static::assertEquals(1, $unit->toBase()->getValue());
     }
 
     public function provideAllUnits(): array
