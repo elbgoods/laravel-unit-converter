@@ -6,6 +6,7 @@ use Elbgoods\LaravelUnitConverter\Enums\UnitSystemEnum;
 use Elbgoods\LaravelUnitConverter\Enums\UnitTypeEnum;
 use Elbgoods\LaravelUnitConverter\Tests\TestCase;
 use Elbgoods\LaravelUnitConverter\Units\Area\SquareCentiMeter;
+use Elbgoods\LaravelUnitConverter\Units\Area\SquareMeter;
 use Elbgoods\LaravelUnitConverter\Units\Length\CentiMeter;
 use Elbgoods\LaravelUnitConverter\Units\Length\Foot;
 use Elbgoods\LaravelUnitConverter\Units\Length\Inch;
@@ -73,10 +74,10 @@ final class UnitTypeEnumTest extends TestCase
         static::assertSame($baseUnitSymbol, $unitType->getBaseUnitSymbol());
         static::assertSame($baseUnitLabel, $unitType->getBaseUnitLabel());
 
-        $baseUnitOne = $unitType->createFromBaseUnit(1.5)->to($baseUnitClass);
+        $baseUnit = $unitType->createFromBaseUnit(1.5)->to($baseUnitClass);
 
-        static::assertInstanceOf($baseUnitClass, $baseUnitOne);
-        static::assertSame(1.5, $baseUnitOne->getValue());
+        static::assertInstanceOf($baseUnitClass, $baseUnit);
+        static::assertSame(1.5, $baseUnit->getValue());
     }
 
     /**
@@ -181,6 +182,7 @@ final class UnitTypeEnumTest extends TestCase
         return [
             ['length', Meter::class, 'm', 'meter'],
             ['mass', KiloGram::class, 'kg', 'kilogram'],
+            ['area', SquareMeter::class, 'm2', 'square meter'],
         ];
     }
 
