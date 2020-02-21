@@ -50,7 +50,7 @@ class UnitTypeEnum extends Enum
             return [];
         }
 
-        return collect($unitClasses)
+        return Collection::make($unitClasses)
             ->mapWithKeys(function (string $unitClass): array {
                 return [$unitClass => (new $unitClass)->toArray()];
             })
@@ -108,12 +108,13 @@ class UnitTypeEnum extends Enum
             return $value instanceof Unit ? $value : $baseValue;
         }
 
-        /** @var Collection $values */
-        $values = collect(array_keys($units))
+        $values = Collection::make(array_keys($units))
             ->map(function (string $unitClass) use ($baseValue): Unit {
                 return $baseValue->to($unitClass);
             })
-            ->sortBy->getValue();
+            ->sortBy(function (Unit $unit): float {
+                return $unit->getValue();
+            });
 
         $nearest = $values->first(function (Unit $unit): bool {
             return $unit->getValue() >= 1;

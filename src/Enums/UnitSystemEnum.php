@@ -2,6 +2,7 @@
 
 namespace Elbgoods\LaravelUnitConverter\Enums;
 
+use Illuminate\Support\Collection;
 use PhpUnitConversion\Map\Unit as UnitMap;
 use PhpUnitConversion\System\Imperial;
 use PhpUnitConversion\System\Metric;
@@ -29,7 +30,7 @@ class UnitSystemEnum extends Enum
             return [];
         }
 
-        return collect($unitClasses)
+        return Collection::make($unitClasses)
             ->filter(function (string $unitClass): bool {
                 return array_key_exists($this->getInterface(), class_implements($unitClass));
             })
