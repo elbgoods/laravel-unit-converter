@@ -21,11 +21,13 @@
     "require": {
         "php": "^7.4",
         "illuminate/support": "^6.0",
-        "php-unit-conversion/php-unit-conversion": "^1.2",
-        "spatie/enum": "^2.3"
+        "php-unit-conversion/php-unit-conversion": "dev-issue-15",
+        "spatie/enum": "^2.3.5"
     },
     "require-dev": {
-        "elbgoods/ci-test-tools": "^1.5",
+        "codedungeon/phpunit-result-printer": "^0.26.2",
+        "elbgoods/ci-test-tools": "^1.5.1",
+        "nunomaduro/collision": "^3.0",
         "orchestra/testbench": "^4.0",
         "phpunit/phpunit": "^8.0"
     },
@@ -49,6 +51,12 @@
             "Elbgoods\\LaravelUnitConverter\\Tests\\": "tests"
         }
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:Gummibeer/php-unit-conversion.git"
+        }
+    ],
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
