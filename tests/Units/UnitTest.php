@@ -3,26 +3,22 @@
 namespace Elbgoods\LaravelUnitConverter\Tests\Units;
 
 use Elbgoods\LaravelUnitConverter\Tests\TestCase;
-use Elbgoods\LaravelUnitConverter\Units\Area;
 use Elbgoods\LaravelUnitConverter\Units\Area\SquareCentiMeter;
 use Elbgoods\LaravelUnitConverter\Units\Area\SquareFoot;
 use Elbgoods\LaravelUnitConverter\Units\Area\SquareInch;
 use Elbgoods\LaravelUnitConverter\Units\Area\SquareMeter;
 use Elbgoods\LaravelUnitConverter\Units\Area\SquareMilliMeter;
 use Elbgoods\LaravelUnitConverter\Units\Area\SquareYard;
-use Elbgoods\LaravelUnitConverter\Units\Length;
 use Elbgoods\LaravelUnitConverter\Units\Length\CentiMeter;
 use Elbgoods\LaravelUnitConverter\Units\Length\Foot;
 use Elbgoods\LaravelUnitConverter\Units\Length\Inch;
 use Elbgoods\LaravelUnitConverter\Units\Length\Meter;
 use Elbgoods\LaravelUnitConverter\Units\Length\MilliMeter;
 use Elbgoods\LaravelUnitConverter\Units\Length\Yard;
-use Elbgoods\LaravelUnitConverter\Units\Mass;
 use Elbgoods\LaravelUnitConverter\Units\Mass\Gram;
 use Elbgoods\LaravelUnitConverter\Units\Mass\KiloGram;
 use Elbgoods\LaravelUnitConverter\Units\Mass\Ounce;
 use Elbgoods\LaravelUnitConverter\Units\Mass\Pound;
-use PhpUnitConversion\Map\Unit as UnitMap;
 
 final class UnitTest extends TestCase
 {
@@ -41,7 +37,7 @@ final class UnitTest extends TestCase
 
     public function provideAllUnits(): array
     {
-        return array_map(function(string $unitClass): array {
+        return array_map(static function (string $unitClass): array {
             return [$unitClass];
         }, [
             CentiMeter::class,
