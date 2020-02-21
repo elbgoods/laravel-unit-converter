@@ -2,10 +2,11 @@
 
 namespace Elbgoods\LaravelUnitConverter\Enums;
 
+use Elbgoods\LaravelUnitConverter\Unit;
 use Elbgoods\LaravelUnitConverter\UnitForwarder;
 use Illuminate\Support\Collection;
 use PhpUnitConversion\Map\Unit as UnitMap;
-use PhpUnitConversion\Unit;
+use PhpUnitConversion\Unit as BaseUnit;
 use PhpUnitConversion\UnitType;
 use Spatie\Enum\Enum;
 
@@ -104,7 +105,7 @@ class UnitTypeEnum extends Enum
         }
 
         $values = Collection::make(array_keys($units))
-            ->map(static function (string $unitClass) use ($baseValue): Unit {
+            ->map(static function (string $unitClass) use ($baseValue): BaseUnit {
                 return $baseValue->to($unitClass);
             })
             ->sortBy(static function (Unit $unit): float {
