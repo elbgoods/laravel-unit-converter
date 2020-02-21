@@ -2,7 +2,9 @@
 
 namespace Elbgoods\LaravelUnitConverter\Enums;
 
+use Elbgoods\LaravelUnitConverter\UnitForwarder;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Traits\ForwardsCalls;
 use PhpUnitConversion\Map\Unit as UnitMap;
 use PhpUnitConversion\Unit;
 use PhpUnitConversion\UnitType;
@@ -61,26 +63,24 @@ class UnitTypeEnum extends Enum
         }, ARRAY_FILTER_USE_KEY);
     }
 
-    public function getBaseUnitClass(): string
+    public function getBaseUnit(): UnitForwarder
     {
-        return constant($this->getUnitTypeClass().'::BASE_UNIT');
+        return UnitForwarder::build(constant($this->getUnitTypeClass().'::BASE_UNIT'));
     }
 
     public function getBaseUnitSymbol(): string
     {
-        return constant($this->getBaseUnitClass().'::SYMBOL');
+        return $this->getBaseUnit()->getSymbol();
     }
 
     public function getBaseUnitLabel(): string
     {
-        return constant($this->getBaseUnitClass().'::LABEL');
+        return $this->getBaseUnit()->getLabel();
     }
 
     public function createFromBaseUnit(float $value): Unit
     {
-        $baseUnitClass = $this->getBaseUnitClass();
-
-        return new $baseUnitClass($value, true);
+        return $this->getBaseUnit()->make($value, true);
     }
 
     /**
@@ -96,7 +96,9 @@ class UnitTypeEnum extends Enum
 
         $units = $unitSystem === null ? $this->getUnits() : $this->getUnitsBySystem($unitSystem);
 
-        $baseValue = $value instanceof Unit ? $value->to($this->getBaseUnitClass()) : $this->createFromBaseUnit($value);
+        $baseValue = $value instanceof Unit
+            ? $value->to($this->getBaseUnit()->unitClassName())
+            : $this->createFromBaseUnit($value);
 
         if (empty($units)) {
             return $value instanceof Unit ? $value : $baseValue;

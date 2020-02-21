@@ -70,7 +70,7 @@ final class UnitTypeEnumTest extends TestCase
     {
         $unitType = UnitTypeEnum::make($type);
 
-        static::assertSame($baseUnitClass, $unitType->getBaseUnitClass());
+        static::assertTrue($unitType->getBaseUnit()->isInstanceOf($baseUnitClass));
         static::assertSame($baseUnitSymbol, $unitType->getBaseUnitSymbol());
         static::assertSame($baseUnitLabel, $unitType->getBaseUnitLabel());
 
