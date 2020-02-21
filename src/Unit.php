@@ -15,6 +15,21 @@ use PhpUnitConversion\Unit as BaseUnit;
 
 abstract class Unit extends BaseUnit implements Arrayable, Jsonable, JsonSerializable
 {
+    public static function make(?float $value = null, bool $convertFromBaseUnit = false): self
+    {
+        return new static($value, $convertFromBaseUnit);
+    }
+
+    public static function fromBase(?float $value = null): self
+    {
+        return new static($value, true);
+    }
+
+    public function toBase(): self
+    {
+        return $this->to($this->getBaseUnit());
+    }
+
     public function getType(): int
     {
         return constant('static::TYPE');
