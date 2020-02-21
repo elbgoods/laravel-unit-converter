@@ -57,6 +57,20 @@ abstract class Unit extends BaseUnit implements Arrayable, Jsonable, JsonSeriali
         return $this->format();
     }
 
+    /**
+     * @param int|null $precision
+     * @param bool|null $addSymbol
+     *
+     * @return string
+     */
+    public function format($precision = null, $addSymbol = null): string
+    {
+        return parent::format(
+            $precision ?? config('unit-converter.formatter.precision', 3),
+            $addSymbol ?? config('unit-converter.formatter.add_symbol', true)
+        );
+    }
+
     public function toArray(): array
     {
         $interfaces = class_implements($this);
