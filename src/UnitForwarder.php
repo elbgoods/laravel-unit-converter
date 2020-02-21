@@ -26,6 +26,12 @@ class UnitForwarder
         $this->unit = $unit;
     }
 
+    /**
+     * @param string $method
+     * @param array $arguments
+     *
+     * @return Unit|int|string|array|mixed
+     */
     public function __call(string $method, array $arguments)
     {
         if (in_array($method, ['make', 'fromBase'])) {
