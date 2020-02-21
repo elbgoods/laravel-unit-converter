@@ -2,13 +2,18 @@
 
 namespace Elbgoods\LaravelUnitConverter;
 
+use Elbgoods\LaravelUnitConverter\Enums\UnitTypeEnum;
 use Illuminate\Support\Traits\ForwardsCalls;
 
 /**
  * @method Unit make($value = null, bool $convertFromBaseUnit = false)
  * @method Unit fromBase(?float $value = null)
  *
- * @mixin Unit
+ * @method UnitTypeEnum getType()
+ * @method string getSymbol()
+ * @method string getLabel()
+ *
+ * @see Unit
  */
 class UnitForwarder
 {
@@ -16,7 +21,7 @@ class UnitForwarder
 
     protected Unit $unit;
 
-    public static function build(string $unitClass): self
+    public static function forwardTo(string $unitClass): self
     {
         return new static(new $unitClass());
     }
@@ -41,7 +46,7 @@ class UnitForwarder
         return $this->forwardCallTo($this->unit, $method, $arguments);
     }
 
-    public function unitClassName(): string
+    public function class(): string
     {
         return get_class($this->unit);
     }

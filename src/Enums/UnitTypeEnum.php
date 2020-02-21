@@ -64,7 +64,7 @@ class UnitTypeEnum extends Enum
 
     public function getBaseUnit(): UnitForwarder
     {
-        return UnitForwarder::build(constant($this->getUnitTypeClass().'::BASE_UNIT'));
+        return UnitForwarder::forwardTo(constant($this->getUnitTypeClass().'::BASE_UNIT'));
     }
 
     public function getBaseUnitSymbol(): string
@@ -96,7 +96,7 @@ class UnitTypeEnum extends Enum
         $units = $unitSystem === null ? $this->getUnits() : $this->getUnitsBySystem($unitSystem);
 
         $baseValue = $value instanceof Unit
-            ? $value->to($this->getBaseUnit()->unitClassName())
+            ? $value->toBase()
             : $this->createFromBaseUnit($value);
 
         if (empty($units)) {

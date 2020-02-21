@@ -39,7 +39,7 @@ abstract class Unit extends BaseUnit implements Arrayable, Jsonable, JsonSeriali
 
     public function toBase(): self
     {
-        $base = $this->to($this->getBaseUnit());
+        $base = $this->to($this->getBaseUnit()->class());
 
         if ($base instanceof self) {
             return $base;
@@ -48,14 +48,14 @@ abstract class Unit extends BaseUnit implements Arrayable, Jsonable, JsonSeriali
         throw new RuntimeException(sprintf('The base unit has to extend [%s].', self::class));
     }
 
-    public function getType(): int
+    public function getType(): UnitTypeEnum
     {
-        return constant('static::TYPE');
+        return UnitTypeEnum::make(constant('static::TYPE'));
     }
 
-    public function getBaseUnit(): string
+    public function getBaseUnit(): UnitForwarder
     {
-        return constant('static::BASE_UNIT');
+        return UnitForwarder::forwardTo(constant('static::BASE_UNIT'));
     }
 
     public function toString(): string
@@ -90,7 +90,7 @@ abstract class Unit extends BaseUnit implements Arrayable, Jsonable, JsonSeriali
             'value' => $this->getValue(),
             'symbol' => $this->getSymbol(),
             'label' => $this->getLabel(),
-            'type' => UnitTypeEnum::make($this->getType())->getValue(),
+            'type' => $this->getType()->getValue(),
             'is_metric' => array_key_exists(Metric::class, $interfaces),
             'is_imperial' => array_key_exists(Imperial::class, $interfaces),
             'is_usc' => array_key_exists(USC::class, $interfaces),
