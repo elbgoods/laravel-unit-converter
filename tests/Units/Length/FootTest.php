@@ -10,13 +10,13 @@ final class FootTest extends TestCase
     /** @test */
     public function it_can_convert_to_other_formats(): void
     {
-        $unit = new Foot(1);
+        $unit = Foot::make(1);
 
         static::assertSame('1.000 ft', $unit->toString());
         static::assertSame('1.000 ft', $unit->__toString());
         static::assertJson($unit->toJson());
         static::assertJson(json_encode($unit->toJson()));
-        static::assertSame([
+        static::assertEquals([
             'value' => 1,
             'symbol' => 'ft',
             'label' => 'foot',
