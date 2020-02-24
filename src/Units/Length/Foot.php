@@ -8,7 +8,7 @@ use PhpUnitConversion\System\USC;
 
 class Foot extends Length implements Imperial, USC
 {
-    public const FACTOR = 1 / 3;
+    public const FACTOR = 0.3048;
 
     public const SYMBOL = 'ft';
     public const LABEL = 'foot';

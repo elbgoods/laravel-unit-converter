@@ -8,7 +8,7 @@ use PhpUnitConversion\System\USC;
 
 class Inch extends Length implements Imperial, USC
 {
-    public const FACTOR = 1 / 36;
+    public const FACTOR = 0.0254;
 
     public const SYMBOL = 'in';
     public const LABEL = 'inch';
