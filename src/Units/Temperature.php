@@ -3,7 +3,6 @@
 namespace Elbgoods\LaravelUnitConverter\Units;
 
 use Elbgoods\LaravelUnitConverter\Unit;
-use Elbgoods\LaravelUnitConverter\Units\Length\Meter;
 use Elbgoods\LaravelUnitConverter\Units\Temperature\Kelvin;
 use PhpUnitConversion\UnitType;
 

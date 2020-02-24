@@ -5,7 +5,6 @@ namespace Elbgoods\LaravelUnitConverter\Tests\Units\Length;
 use Elbgoods\LaravelUnitConverter\Tests\TestCase;
 use Elbgoods\LaravelUnitConverter\Units\Length\CentiMeter;
 use Elbgoods\LaravelUnitConverter\Units\Length\Meter;
-use Elbgoods\LaravelUnitConverter\Units\Length\MilliMeter;
 
 final class CentiMeterTest extends TestCase
 {

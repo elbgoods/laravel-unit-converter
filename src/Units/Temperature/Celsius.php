@@ -1,4 +1,5 @@
 <?php
+
 namespace Elbgoods\LaravelUnitConverter\Units\Temperature;
 
 use Elbgoods\LaravelUnitConverter\Units\Temperature;

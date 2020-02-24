@@ -3,14 +3,8 @@
 namespace Elbgoods\LaravelUnitConverter\Tests\Units\Mass;
 
 use Elbgoods\LaravelUnitConverter\Tests\TestCase;
-use Elbgoods\LaravelUnitConverter\Units\Length\CentiMeter;
-use Elbgoods\LaravelUnitConverter\Units\Length\Meter;
-use Elbgoods\LaravelUnitConverter\Units\Length\MilliMeter;
-use Elbgoods\LaravelUnitConverter\Units\Mass\Gram;
 use Elbgoods\LaravelUnitConverter\Units\Mass\KiloGram;
 use Elbgoods\LaravelUnitConverter\Units\Mass\Ounce;
-use Elbgoods\LaravelUnitConverter\Units\Temperature\Celsius;
-use Elbgoods\LaravelUnitConverter\Units\Temperature\Kelvin;
 
 final class OunceTest extends TestCase
 {

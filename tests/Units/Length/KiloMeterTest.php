@@ -3,10 +3,8 @@
 namespace Elbgoods\LaravelUnitConverter\Tests\Units\Length;
 
 use Elbgoods\LaravelUnitConverter\Tests\TestCase;
-use Elbgoods\LaravelUnitConverter\Units\Length\CentiMeter;
 use Elbgoods\LaravelUnitConverter\Units\Length\KiloMeter;
 use Elbgoods\LaravelUnitConverter\Units\Length\Meter;
-use Elbgoods\LaravelUnitConverter\Units\Length\MilliMeter;
 
 final class KiloMeterTest extends TestCase
 {

@@ -3,7 +3,6 @@
 namespace Elbgoods\LaravelUnitConverter\Tests\Units\Length;
 
 use Elbgoods\LaravelUnitConverter\Tests\TestCase;
-use Elbgoods\LaravelUnitConverter\Units\Length\Foot;
 use Elbgoods\LaravelUnitConverter\Units\Length\Meter;
 use Elbgoods\LaravelUnitConverter\Units\Length\Mile;
 use Elbgoods\LaravelUnitConverter\Units\Length\Yard;

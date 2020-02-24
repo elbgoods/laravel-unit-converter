@@ -3,9 +3,6 @@
 namespace Elbgoods\LaravelUnitConverter\Tests\Units\Temperature;
 
 use Elbgoods\LaravelUnitConverter\Tests\TestCase;
-use Elbgoods\LaravelUnitConverter\Units\Length\CentiMeter;
-use Elbgoods\LaravelUnitConverter\Units\Length\Meter;
-use Elbgoods\LaravelUnitConverter\Units\Length\MilliMeter;
 use Elbgoods\LaravelUnitConverter\Units\Temperature\Celsius;
 use Elbgoods\LaravelUnitConverter\Units\Temperature\Kelvin;
 

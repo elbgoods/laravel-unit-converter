@@ -3,7 +3,6 @@
 namespace Elbgoods\LaravelUnitConverter\Tests\Units\Temperature;
 
 use Elbgoods\LaravelUnitConverter\Tests\TestCase;
-use Elbgoods\LaravelUnitConverter\Units\Length\Meter;
 use Elbgoods\LaravelUnitConverter\Units\Temperature\Kelvin;
 
 final class KelvinTest extends TestCase

@@ -5,7 +5,6 @@ namespace Elbgoods\LaravelUnitConverter\Tests\Units\Length;
 use Elbgoods\LaravelUnitConverter\Tests\TestCase;
 use Elbgoods\LaravelUnitConverter\Units\Length\Inch;
 use Elbgoods\LaravelUnitConverter\Units\Length\Meter;
-use Elbgoods\LaravelUnitConverter\Units\Length\Yard;
 
 final class InchTest extends TestCase
 {
