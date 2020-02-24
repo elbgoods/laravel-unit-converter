@@ -22,7 +22,7 @@
         "php": "^7.4",
         "ext-json": "*",
         "illuminate/support": "^6.0",
-        "php-unit-conversion/php-unit-conversion": "dev-issue-15",
+        "php-unit-conversion/php-unit-conversion": "^1.2.2",
         "spatie/enum": "^2.3.5"
     },
     "require-dev": {
@@ -38,7 +38,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Elbgoods\\LaravelUnitConverter\\LaravelUnitConverterServiceProvider"
+                "Elbgoods\\LaravelUnitConverter\\UnitConverterServiceProvider"
             ]
         }
     },

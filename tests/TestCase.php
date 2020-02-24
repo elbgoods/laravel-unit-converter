@@ -2,7 +2,7 @@
 
 namespace Elbgoods\LaravelUnitConverter\Tests;
 
-use Elbgoods\LaravelUnitConverter\LaravelUnitConverterServiceProvider;
+use Elbgoods\LaravelUnitConverter\UnitConverterServiceProvider;
 use Elbgoods\LaravelUnitConverter\Units\Area;
 use Elbgoods\LaravelUnitConverter\Units\Area\SquareCentiMeter;
 use Elbgoods\LaravelUnitConverter\Units\Area\SquareFoot;
@@ -61,7 +61,7 @@ abstract class TestCase extends OrchestraTestCase
     protected function getPackageProviders($app)
     {
         return [
-            LaravelUnitConverterServiceProvider::class,
+            UnitConverterServiceProvider::class,
         ];
     }
 }

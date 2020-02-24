@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use PhpUnitConversion\Map as UnitMap;
 use ReflectionClass;
 
-class LaravelUnitConverterServiceProvider extends ServiceProvider
+class UnitConverterServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
@@ -16,10 +16,6 @@ class LaravelUnitConverterServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__.'/../config/config.php' => config_path('unit-converter.php'),
             ], 'config');
-
-            $this->publishes([
-                __DIR__.'/../resources/lang' => resource_path('lang/vendor/unit-converter'),
-            ], 'lang');
         }
 
         if (! config('unit-converter.default_units')) {
