@@ -14,7 +14,7 @@ https://github.com/pimlie/php-unit-conversion
 You can install the package via composer:
 
 ```bash
-composer require elbgoods/laravel-converter
+composer require elbgoods/laravel-unit-converter
 ```
 
 ## Usage
