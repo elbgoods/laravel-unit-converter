@@ -3,6 +3,8 @@
 namespace Elbgoods\LaravelUnitConverter\Tests\Units\Length;
 
 use Elbgoods\LaravelUnitConverter\Tests\TestCase;
+use Elbgoods\LaravelUnitConverter\Units\Length\Foot;
+use Elbgoods\LaravelUnitConverter\Units\Length\Meter;
 use Elbgoods\LaravelUnitConverter\Units\Length\Yard;
 
 final class YardTest extends TestCase
@@ -27,5 +29,14 @@ final class YardTest extends TestCase
             'is_si' => false,
             'is_base' => false,
         ], $unit->toArray());
+    }
+
+    /** @test */
+    public function it_converts_from_base(): void
+    {
+        $unit = Meter::make(0.9144)->to(Yard::class);
+
+        static::assertInstanceOf(Yard::class, $unit);
+        static::assertSame(1.0, $unit->getValue());
     }
 }

@@ -5,23 +5,24 @@ namespace Elbgoods\LaravelUnitConverter\Tests\Units\Length;
 use Elbgoods\LaravelUnitConverter\Tests\TestCase;
 use Elbgoods\LaravelUnitConverter\Units\Length\Foot;
 use Elbgoods\LaravelUnitConverter\Units\Length\Meter;
-use Elbgoods\LaravelUnitConverter\Units\Length\MilliMeter;
+use Elbgoods\LaravelUnitConverter\Units\Length\Mile;
+use Elbgoods\LaravelUnitConverter\Units\Length\Yard;
 
-final class FootTest extends TestCase
+final class MileTest extends TestCase
 {
     /** @test */
     public function it_can_convert_to_other_formats(): void
     {
-        $unit = Foot::make(1);
+        $unit = Mile::make(1);
 
-        static::assertSame('1.000 ft', $unit->toString());
-        static::assertSame('1.000 ft', $unit->__toString());
+        static::assertSame('1.000 mi', $unit->toString());
+        static::assertSame('1.000 mi', $unit->__toString());
         static::assertJson($unit->toJson());
         static::assertJson(json_encode($unit->toJson()));
         static::assertEquals([
             'value' => 1,
-            'symbol' => 'ft',
-            'label' => 'foot',
+            'symbol' => 'mi',
+            'label' => 'mile',
             'type' => 'length',
             'is_metric' => false,
             'is_imperial' => true,
@@ -34,9 +35,9 @@ final class FootTest extends TestCase
     /** @test */
     public function it_converts_from_base(): void
     {
-        $unit = Meter::make(0.3048)->to(Foot::class);
+        $unit = Meter::make(0.9144)->to(Yard::class);
 
-        static::assertInstanceOf(Foot::class, $unit);
+        static::assertInstanceOf(Yard::class, $unit);
         static::assertSame(1.0, $unit->getValue());
     }
 }

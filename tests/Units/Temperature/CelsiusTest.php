@@ -1,27 +1,30 @@
 <?php
 
-namespace Elbgoods\LaravelUnitConverter\Tests\Units\Length;
+namespace Elbgoods\LaravelUnitConverter\Tests\Units\Temperature;
 
 use Elbgoods\LaravelUnitConverter\Tests\TestCase;
+use Elbgoods\LaravelUnitConverter\Units\Length\CentiMeter;
 use Elbgoods\LaravelUnitConverter\Units\Length\Meter;
 use Elbgoods\LaravelUnitConverter\Units\Length\MilliMeter;
+use Elbgoods\LaravelUnitConverter\Units\Temperature\Celsius;
+use Elbgoods\LaravelUnitConverter\Units\Temperature\Kelvin;
 
-final class MilliMeterTest extends TestCase
+final class CelsiusTest extends TestCase
 {
     /** @test */
     public function it_can_convert_to_other_formats(): void
     {
-        $unit = MilliMeter::make(1);
+        $unit = Celsius::make(1);
 
-        static::assertSame('1.000 mm', $unit->toString());
-        static::assertSame('1.000 mm', $unit->__toString());
+        static::assertSame('1.000 °C', $unit->toString());
+        static::assertSame('1.000 °C', $unit->__toString());
         static::assertJson($unit->toJson());
         static::assertJson(json_encode($unit->toJson()));
         static::assertEquals([
             'value' => 1,
-            'symbol' => 'mm',
-            'label' => 'millimeter',
-            'type' => 'length',
+            'symbol' => '°C',
+            'label' => 'celsius',
+            'type' => 'temperature',
             'is_metric' => true,
             'is_imperial' => false,
             'is_usc' => false,
@@ -33,9 +36,9 @@ final class MilliMeterTest extends TestCase
     /** @test */
     public function it_converts_from_base(): void
     {
-        $unit = Meter::make(0.001)->to(MilliMeter::class);
+        $unit = Kelvin::make(274.15)->to(Celsius::class);
 
-        static::assertInstanceOf(MilliMeter::class, $unit);
+        static::assertInstanceOf(Celsius::class, $unit);
         static::assertSame(1.0, $unit->getValue());
     }
 }

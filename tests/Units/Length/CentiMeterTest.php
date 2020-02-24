@@ -4,6 +4,8 @@ namespace Elbgoods\LaravelUnitConverter\Tests\Units\Length;
 
 use Elbgoods\LaravelUnitConverter\Tests\TestCase;
 use Elbgoods\LaravelUnitConverter\Units\Length\CentiMeter;
+use Elbgoods\LaravelUnitConverter\Units\Length\Meter;
+use Elbgoods\LaravelUnitConverter\Units\Length\MilliMeter;
 
 final class CentiMeterTest extends TestCase
 {
@@ -27,5 +29,14 @@ final class CentiMeterTest extends TestCase
             'is_si' => false,
             'is_base' => false,
         ], $unit->toArray());
+    }
+
+    /** @test */
+    public function it_converts_from_base(): void
+    {
+        $unit = Meter::make(0.01)->to(CentiMeter::class);
+
+        static::assertInstanceOf(CentiMeter::class, $unit);
+        static::assertSame(1.0, $unit->getValue());
     }
 }
