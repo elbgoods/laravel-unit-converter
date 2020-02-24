@@ -19,6 +19,9 @@ use Elbgoods\LaravelUnitConverter\Units\Mass\Gram;
 use Elbgoods\LaravelUnitConverter\Units\Mass\KiloGram;
 use Elbgoods\LaravelUnitConverter\Units\Mass\Ounce;
 use Elbgoods\LaravelUnitConverter\Units\Mass\Pound;
+use Elbgoods\LaravelUnitConverter\Units\Temperature\Celsius;
+use Elbgoods\LaravelUnitConverter\Units\Temperature\Fahrenheit;
+use Elbgoods\LaravelUnitConverter\Units\Temperature\Kelvin;
 
 final class UnitTest extends TestCase
 {
@@ -62,6 +65,9 @@ final class UnitTest extends TestCase
             SquareFoot::class,
             SquareInch::class,
             SquareYard::class,
+            Celsius::class,
+            Fahrenheit::class,
+            Kelvin::class,
         ]);
     }
 }
