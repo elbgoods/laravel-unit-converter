@@ -53,6 +53,11 @@ abstract class Unit extends BaseUnit implements Arrayable, Jsonable, JsonSeriali
         return UnitTypeEnum::make(constant('static::TYPE'));
     }
 
+    public function getValue(): ?float
+    {
+        return $this->value;
+    }
+
     public function getBaseUnit(): UnitForwarder
     {
         return UnitForwarder::forwardTo(constant('static::BASE_UNIT'));
