@@ -7,6 +7,7 @@ use Illuminate\Support\Traits\ForwardsCalls;
 
 /**
  * @method Unit make($value = null, bool $convertFromBaseUnit = false)
+ * @method Unit from(float|string|Unit $value)
  * @method Unit fromBase(?float $value = null)
  *
  * @method UnitTypeEnum getType()
@@ -39,7 +40,7 @@ class UnitForwarder
      */
     public function __call(string $method, array $arguments)
     {
-        if (in_array($method, ['make', 'fromBase'])) {
+        if (in_array($method, ['make', 'from', 'fromBase'])) {
             return forward_static_call_array([get_class($this->unit), $method], $arguments);
         }
 
