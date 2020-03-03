@@ -7,8 +7,8 @@ use PhpUnitConversion\System\Metric;
 
 class Celsius extends Temperature implements Metric
 {
-    const ADDITION_PRE = 273.15;
+    public const ADDITION_PRE = 273.15;
 
-    const SYMBOL = '°C';
-    const LABEL = 'celsius';
+    public const SYMBOL = '°C';
+    public const LABEL = 'celsius';
 }

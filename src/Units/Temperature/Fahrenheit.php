@@ -7,9 +7,9 @@ use PhpUnitConversion\System\USC;
 
 class Fahrenheit extends Temperature implements USC
 {
-    const FACTOR = 5 / 9;
-    const ADDITION_PRE = 459.67;
+    public const FACTOR = 5 / 9;
+    public const ADDITION_PRE = 459.67;
 
-    const SYMBOL = '°F';
-    const LABEL = 'fahrenheit';
+    public const SYMBOL = '°F';
+    public const LABEL = 'fahrenheit';
 }
