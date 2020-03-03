@@ -59,13 +59,13 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
-        "test": "vendor/bin/phpunit",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
         "post-install-cmd": [
             "@composer bin all install --ansi"
         ],
         "post-update-cmd": [
             "@composer bin all update --ansi"
-        ]
+        ],
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
     }
 }
