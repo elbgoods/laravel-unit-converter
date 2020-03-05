@@ -22,7 +22,7 @@
         "php": "^7.4",
         "ext-json": "*",
         "illuminate/support": "^6.0 || ^7.0",
-        "php-unit-conversion/php-unit-conversion": "dev-issue-15",
+        "php-unit-conversion/php-unit-conversion": "^1.2.3",
         "spatie/enum": "^2.3.5"
     },
     "require-dev": {
@@ -50,12 +50,6 @@
             "Elbgoods\\LaravelUnitConverter\\Tests\\": "tests"
         }
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/Gummibeer/php-unit-conversion.git"
-        }
-    ],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
