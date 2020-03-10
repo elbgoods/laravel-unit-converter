@@ -14,6 +14,9 @@ use PhpUnitConversion\Traits\BaseUnit as IsBaseUnit;
 use PhpUnitConversion\Unit as BaseUnit;
 use RuntimeException;
 
+/**
+ * @method Unit to(Unit|string $target)
+ */
 abstract class Unit extends BaseUnit implements Arrayable, Jsonable, JsonSerializable
 {
     /**

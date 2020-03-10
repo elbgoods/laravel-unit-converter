@@ -2,7 +2,6 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/elbgoods/laravel-unit-converter.svg?style=flat-square)](https://packagist.org/packages/elbgoods/laravel-unit-converter)
 
-
 This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
 
 https://github.com/pimlie/php-unit-conversion
@@ -47,7 +46,3 @@ If you discover any security related issues, please email dev.gummibeer@gmail.co
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
-
-## Laravel Package Boilerplate
-
-This package was generated using the [Laravel Package Boilerplate](https://laravelpackageboilerplate.com).

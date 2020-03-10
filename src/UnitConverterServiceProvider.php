@@ -18,8 +18,10 @@ class UnitConverterServiceProvider extends ServiceProvider
             ], 'config');
         }
 
-        if (! config('unit-converter.default_units')) {
-            UnitMap::clear();
+        UnitMap::clear();
+
+        if (config('unit-converter.default_units')) {
+            UnitMap::add(__DIR__.'/Units', __NAMESPACE__.'\\Units', null);
         }
 
         foreach (config('unit-converter.units') as $unitType => $units) {
