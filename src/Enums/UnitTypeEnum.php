@@ -5,9 +5,9 @@ namespace Elbgoods\LaravelUnitConverter\Enums;
 use Elbgoods\LaravelUnitConverter\Unit;
 use Elbgoods\LaravelUnitConverter\UnitForwarder;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 use PhpUnitConversion\Map\Unit as UnitMap;
 use PhpUnitConversion\Unit as BaseUnit;
-use PhpUnitConversion\UnitType;
 use Spatie\Enum\Enum;
 
 /**
@@ -18,17 +18,29 @@ use Spatie\Enum\Enum;
  * @method static self TIME()
  * @method static self TEMPERATURE()
  * @method static self AMOUNT()
+ * @method static self LUMINANCE()
+ * @method static self LUMINANCE_ANSI()
+ * @method static self LUMINOUS_FLUX()
+ * @method static self ANGLE()
+ * @method static self POWER()
+ * @method static self PERCENTAGE()
  */
 class UnitTypeEnum extends Enum
 {
     protected const MAP_INDEX = [
-        'MASS' => UnitType::MASS,
-        'LENGTH' => UnitType::LENGTH,
-        'AREA' => UnitType::AREA,
-        'VOLUME' => UnitType::VOLUME,
-        'TIME' => UnitType::TIME,
-        'TEMPERATURE' => UnitType::TEMPERATURE,
-        'AMOUNT' => UnitType::AMOUNT,
+        'MASS' => 1,
+        'LENGTH' => 2,
+        'AREA' => 3,
+        'VOLUME' => 4,
+        'TIME' => 5,
+        'TEMPERATURE' => 6,
+        'AMOUNT' => 7,
+        'LUMINANCE' => 8,
+        'LUMINANCE_ANSI' => 9,
+        'LUMINOUS_FLUX' => 10,
+        'ANGLE' => 11,
+        'POWER' => 12,
+        'PERCENTAGE' => 13,
     ];
 
     public function getValue(): string
@@ -38,7 +50,7 @@ class UnitTypeEnum extends Enum
 
     public function getUnitTypeClass(): string
     {
-        return 'Elbgoods\\LaravelUnitConverter\\Units\\'.ucfirst($this->getValue());
+        return 'Elbgoods\\LaravelUnitConverter\\Units\\'.Str::studly($this->getValue());
     }
 
     public function getUnits(): array

@@ -21,7 +21,7 @@ class UnitConverterServiceProvider extends ServiceProvider
         UnitMap::clear();
 
         if (config('unit-converter.default_units')) {
-            UnitMap::add(__DIR__.'/Units', __NAMESPACE__.'\\Units', null);
+            UnitMap::add(__DIR__.'/Units', __NAMESPACE__.'\\Units');
         }
 
         foreach (config('unit-converter.units') as $unitType => $units) {
