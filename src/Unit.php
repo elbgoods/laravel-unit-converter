@@ -12,7 +12,6 @@ use PhpUnitConversion\System\Metric;
 use PhpUnitConversion\System\USC;
 use PhpUnitConversion\Traits\BaseUnit as IsBaseUnit;
 use PhpUnitConversion\Unit as BaseUnit;
-use RuntimeException;
 
 /**
  * @method Unit to(Unit|string $target)
