@@ -16,7 +16,7 @@ final class CelsiusTest extends TestCase
         static::assertSame('1.000 °C', $unit->toString());
         static::assertSame('1.000 °C', $unit->__toString());
         static::assertJson($unit->toJson());
-        static::assertJson(json_encode($unit->toJson()));
+        static::assertJson(json_encode($unit));
         static::assertEquals([
             'value' => 1,
             'symbol' => '°C',

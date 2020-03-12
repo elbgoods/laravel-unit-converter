@@ -1,30 +1,30 @@
 <?php
 
-namespace Elbgoods\LaravelUnitConverter\Tests\Units\Mass;
+namespace Elbgoods\LaravelUnitConverter\Tests\Units\Percentage;
 
 use Elbgoods\LaravelUnitConverter\Tests\TestCase;
-use Elbgoods\LaravelUnitConverter\Units\Mass\KiloGram;
+use Elbgoods\LaravelUnitConverter\Units\Percentage\Percent;
 
-final class KiloGramTest extends TestCase
+final class PercentTest extends TestCase
 {
     /** @test */
     public function it_can_convert_to_other_formats(): void
     {
-        $unit = KiloGram::make(1);
+        $unit = Percent::make(1);
 
-        static::assertSame('1.000 kg', $unit->toString());
-        static::assertSame('1.000 kg', $unit->__toString());
+        static::assertSame('1.000 %', $unit->toString());
+        static::assertSame('1.000 %', $unit->__toString());
         static::assertJson($unit->toJson());
         static::assertJson(json_encode($unit));
         static::assertEquals([
             'value' => 1,
-            'symbol' => 'kg',
-            'label' => 'kilogram',
-            'type' => 'mass',
+            'symbol' => '%',
+            'label' => 'percent',
+            'type' => 'percentage',
             'is_metric' => true,
             'is_imperial' => false,
             'is_usc' => false,
-            'is_si' => true,
+            'is_si' => false,
             'is_base' => true,
         ], $unit->toArray());
     }

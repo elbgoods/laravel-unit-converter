@@ -1,30 +1,30 @@
 <?php
 
-namespace Elbgoods\LaravelUnitConverter\Tests\Units\Mass;
+namespace Elbgoods\LaravelUnitConverter\Tests\Units\Angle;
 
 use Elbgoods\LaravelUnitConverter\Tests\TestCase;
-use Elbgoods\LaravelUnitConverter\Units\Mass\KiloGram;
+use Elbgoods\LaravelUnitConverter\Units\Angle\Radian;
 
-final class KiloGramTest extends TestCase
+final class RadianTest extends TestCase
 {
     /** @test */
     public function it_can_convert_to_other_formats(): void
     {
-        $unit = KiloGram::make(1);
+        $unit = Radian::make(1);
 
-        static::assertSame('1.000 kg', $unit->toString());
-        static::assertSame('1.000 kg', $unit->__toString());
+        static::assertSame('1.000 rad', $unit->toString());
+        static::assertSame('1.000 rad', $unit->__toString());
         static::assertJson($unit->toJson());
         static::assertJson(json_encode($unit));
         static::assertEquals([
             'value' => 1,
-            'symbol' => 'kg',
-            'label' => 'kilogram',
-            'type' => 'mass',
+            'symbol' => 'rad',
+            'label' => 'radian',
+            'type' => 'angle',
             'is_metric' => true,
             'is_imperial' => false,
             'is_usc' => false,
-            'is_si' => true,
+            'is_si' => false,
             'is_base' => true,
         ], $unit->toArray());
     }

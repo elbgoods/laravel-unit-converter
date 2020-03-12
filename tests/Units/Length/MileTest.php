@@ -17,7 +17,7 @@ final class MileTest extends TestCase
         static::assertSame('1.000 mi', $unit->toString());
         static::assertSame('1.000 mi', $unit->__toString());
         static::assertJson($unit->toJson());
-        static::assertJson(json_encode($unit->toJson()));
+        static::assertJson(json_encode($unit));
         static::assertEquals([
             'value' => 1,
             'symbol' => 'mi',

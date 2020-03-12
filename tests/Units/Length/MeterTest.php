@@ -15,7 +15,7 @@ final class MeterTest extends TestCase
         static::assertSame('1.000 m', $unit->toString());
         static::assertSame('1.000 m', $unit->__toString());
         static::assertJson($unit->toJson());
-        static::assertJson(json_encode($unit->toJson()));
+        static::assertJson(json_encode($unit));
         static::assertEquals([
             'value' => 1,
             'symbol' => 'm',

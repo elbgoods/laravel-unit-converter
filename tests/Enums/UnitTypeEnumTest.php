@@ -13,10 +13,14 @@ use Elbgoods\LaravelUnitConverter\Units\Length\Inch;
 use Elbgoods\LaravelUnitConverter\Units\Length\Meter;
 use Elbgoods\LaravelUnitConverter\Units\Length\MilliMeter;
 use Elbgoods\LaravelUnitConverter\Units\Length\Yard;
+use Elbgoods\LaravelUnitConverter\Units\Luminance\CandelaPerSquareMeter;
+use Elbgoods\LaravelUnitConverter\Units\LuminanceAnsi\AnsiLumen;
+use Elbgoods\LaravelUnitConverter\Units\LuminousFlux\Lumen;
 use Elbgoods\LaravelUnitConverter\Units\Mass\Gram;
 use Elbgoods\LaravelUnitConverter\Units\Mass\KiloGram;
 use Elbgoods\LaravelUnitConverter\Units\Mass\Ounce;
 use Elbgoods\LaravelUnitConverter\Units\Mass\Pound;
+use Elbgoods\LaravelUnitConverter\Units\Temperature\Kelvin;
 
 final class UnitTypeEnumTest extends TestCase
 {
@@ -121,6 +125,21 @@ final class UnitTypeEnumTest extends TestCase
 
             ['AMOUNT', 'amount'],
             ['amount', 'amount'],
+
+            ['LUMINANCE', 'luminance'],
+            ['luminance', 'luminance'],
+
+            ['LUMINANCE_ANSI', 'luminance_ansi'],
+            ['luminance_ansi', 'luminance_ansi'],
+
+            ['ANGLE', 'angle'],
+            ['angle', 'angle'],
+
+            ['POWER', 'power'],
+            ['power', 'power'],
+
+            ['PERCENTAGE', 'percentage'],
+            ['percentage', 'percentage'],
         ];
     }
 
@@ -180,9 +199,13 @@ final class UnitTypeEnumTest extends TestCase
     public function provideUnitTypeBaseUnits(): array
     {
         return [
-            ['length', Meter::class, 'm', 'meter'],
-            ['mass', KiloGram::class, 'kg', 'kilogram'],
             ['area', SquareMeter::class, 'm2', 'square meter'],
+            ['length', Meter::class, 'm', 'meter'],
+            ['luminance', CandelaPerSquareMeter::class, 'cd/m2', 'candela per square meter'],
+            ['luminance_ansi', AnsiLumen::class, 'lm', 'ansi lumen'],
+            ['luminous_flux', Lumen::class, 'lm', 'lumen'],
+            ['mass', KiloGram::class, 'kg', 'kilogram'],
+            ['temperature', Kelvin::class, 'K', 'kelvin'],
         ];
     }
 
