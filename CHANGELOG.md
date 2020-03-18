@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-unit-converter` will be documented in this file
 
+## 0.1.2 - 2020-03-18
+
+- fix mile factor
+
 ## 0.1.1 - 2020-03-10
 
 - fix default units
