@@ -8,7 +8,7 @@ use PhpUnitConversion\System\USC;
 
 class Mile extends Length implements Imperial, USC
 {
-    public const FACTOR = 0.000621371;
+    public const FACTOR = 1609.344;
 
     public const SYMBOL = 'mi';
     public const LABEL = 'mile';
