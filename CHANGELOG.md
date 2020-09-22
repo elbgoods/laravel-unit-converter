@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-unit-converter` will be documented in this file
 
+## 0.3.0 - 2020-09-22
+
+- add Laravel 8 support
+
 ## 0.2.1 - 2020-03-18
 
 - fix mile factor
