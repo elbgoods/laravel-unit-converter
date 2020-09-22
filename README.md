@@ -16,13 +16,13 @@ composer require elbgoods/laravel-unit-converter
 
 ## Usage
 
-``` php
+```php
 // Usage description here
 ```
 
 ### Testing
 
-``` bash
+```bash
 composer test
 ```
 
