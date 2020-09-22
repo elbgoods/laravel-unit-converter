@@ -9,7 +9,6 @@ use Illuminate\Support\Traits\ForwardsCalls;
  * @method Unit make($value = null, bool $convertFromBaseUnit = false)
  * @method Unit from(float|string|Unit $value)
  * @method Unit fromBase(?float $value = null)
- *
  * @method UnitTypeEnum getType()
  * @method string getSymbol()
  * @method string getLabel()
@@ -22,14 +21,24 @@ class UnitForwarder
 
     protected Unit $unit;
 
+    public function __construct(Unit $unit)
+    {
+        $this->unit = $unit;
+    }
+
     public static function forwardTo(string $unitClass): self
     {
         return new static(new $unitClass());
     }
 
-    public function __construct(Unit $unit)
+    public function class(): string
     {
-        $this->unit = $unit;
+        return get_class($this->unit);
+    }
+
+    public function isInstanceOf(string $unitClass): bool
+    {
+        return $this->unit instanceof $unitClass;
     }
 
     /**
@@ -45,15 +54,5 @@ class UnitForwarder
         }
 
         return $this->forwardCallTo($this->unit, $method, $arguments);
-    }
-
-    public function class(): string
-    {
-        return get_class($this->unit);
-    }
-
-    public function isInstanceOf(string $unitClass): bool
-    {
-        return $this->unit instanceof $unitClass;
     }
 }
