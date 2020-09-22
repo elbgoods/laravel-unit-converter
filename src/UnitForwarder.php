@@ -9,7 +9,6 @@ use Illuminate\Support\Traits\ForwardsCalls;
  * @method Unit make($value = null, bool $convertFromBaseUnit = false)
  * @method Unit from(float|string|Unit $value)
  * @method Unit fromBase(?float $value = null)
- *
  * @method UnitTypeEnum getType()
  * @method string getSymbol()
  * @method string getLabel()
