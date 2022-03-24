@@ -23,7 +23,7 @@
         "ext-json": "*",
         "illuminate/support": "^6.0 || ^7.0 || ^8.0 || ^9.0",
         "php-unit-conversion/php-unit-conversion": "^1.2.3",
-        "spatie/enum": "^2.3.5"
+        "spatie/enum": "^3.12.0"
     },
     "require-dev": {
         "bamarni/composer-bin-plugin": "^1.3",
